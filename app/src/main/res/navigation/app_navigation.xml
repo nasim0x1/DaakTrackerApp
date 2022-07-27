@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_navigation"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="bd.smartpost.tracker.ui.view.home.HomeFragment"
+        android:label="@string/fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_domesticDetailsFragment"
+            app:destination="@id/domesticDetailsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_internationalDetailsFragment"
+            app:destination="@id/internationalDetailsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_parcelOptionsFragment"
+            app:destination="@id/parcelOptionsFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/addParcelFragment"
+        android:name="bd.smartpost.tracker.ui.view.add.AddParcelFragment"
+        android:label="@null"
+        tools:layout="@layout/fragment_add_parcel" />
+    <dialog
+        android:id="@+id/parcelOptionsFragment"
+        android:name="bd.smartpost.tracker.ui.view.options.ParcelOptionsFragment"
+        android:label="@null"
+        tools:layout="@layout/fragment_parcel_options" >
+        <argument
+            android:name="parcel"
+            app:argType="bd.smartpost.tracker.data.model.Parcel" />
+    </dialog>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="bd.smartpost.tracker.ui.view.settings.SettingsFragment"
+        android:label="@string/fragment_settings"
+        tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/internationalDetailsFragment"
+        android:name="bd.smartpost.tracker.ui.view.details.international.InternationalDetailsFragment"
+        android:label="{title}"
+        tools:layout="@layout/fragment_international_details" >
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="parcel"
+            app:argType="bd.smartpost.tracker.data.model.Parcel" />
+        <action
+            android:id="@+id/action_internationalDetailsFragment_to_parcelOptionsFragment"
+            app:destination="@id/parcelOptionsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/domesticDetailsFragment"
+        android:name="bd.smartpost.tracker.ui.view.details.domestic.DomesticDetailsFragment"
+        android:label="{title}"
+        tools:layout="@layout/fragment_domestic_details" >
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="parcel"
+            app:argType="bd.smartpost.tracker.data.model.Parcel" />
+        <action
+            android:id="@+id/action_domesticDetailsFragment_to_parcelOptionsFragment"
+            app:destination="@id/parcelOptionsFragment" />
+    </fragment>
+</navigation>
